@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="kr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DKD</title>
+    <meta charset="utf-8">
+    <style>
+        .px {
+            width: 10px !important;
+            height: 10px !important;
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            overflow: hidden;
+        }
+        .div {
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="t"></div>
+    <script>
+        const defaultFrame = [10, 10, "000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff"]
+        
+        let t = [];
+        for(var i = 0; i < defaultFrame[2].length / 6; i++) {
+            // var s = defaultFrame[2].substring(i * 6, i * 6 + 6);
+            // t.push([s.substring(0, 2), s.substring(2, 4), s.substring(4, 6)])
+            t.push(defaultFrame[2].substring(i * 6, i * 6 + 6));
+        }
+        for(var i = 0; i < defaultFrame[1]; i++) {
+            var node = document.createElement("DIV");
+            var att = document.createAttribute("id");
+            att.value = "t" + i;
+            node.setAttributeNode(att);
+            att = document.createAttribute("class");
+            att.value = "div";
+            node.setAttributeNode(att);
+            document.getElementById("t").appendChild(node);
+            for(var j = 0; j < defaultFrame[0]; j++) {
+                var node = document.createElement("SPAN");
+                var textnode = document.createTextNode("....");
+                node.appendChild(textnode);
+                var att = document.createAttribute("style");
+                att.value = "background-color: #" + t[i * 10 + j] + ";color: #" + t[i * 10 + j];
+                node.setAttributeNode(att);
+                att = document.createAttribute("class");
+                att.value = "px";
+                node.setAttributeNode(att);
+                document.getElementById("t" + i).appendChild(node);
+            }
+        }
+    </script>
+</body>
+</html>
